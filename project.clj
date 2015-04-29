@@ -1,7 +1,7 @@
 (defproject spatialista "0.1.0-SNAPSHOT"
   :description "Spatialista"
   :url "http://spatialista.com"
-  :license {:name "BSD Simplified"
+  :license {:name "New BSD License"
             :url "https://github.com/Gaudj/spatialista/blob/master/LICENSE"}
   :dependencies [[org.clojure/clojure "1.6.0"]
                  [org.clojure/tools.logging "0.3.1"]
