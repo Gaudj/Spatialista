@@ -1,0 +1,74 @@
+﻿{% extends "layouts/home.html" %}
+
+
+{% block content %}
+<div class="question-form panel panel-default">
+  <div class="panel-heading">
+    提问
+  </div>
+  <form accept-charset="UTF-8" action="/questions" class="panel-body" id="new-question" method="post">
+    <input type="hidden" name="__anti-forgery-token" value="{{csrf-token}}">
+    <div class="form-group">
+      <label>标题</label>
+      <input name="title" id="title" class="form-control" placeholder="标题" type="text">
+    </div>
+    <div class="form-group">
+      <label>标签</label>
+      <input name="tags" id="tags" class="form-control" type="hidden" value="">
+    </div>
+    <div class="form-group">
+      <label>内容</label>
+      <textarea name="content" id="content" rows="5" class="form-control"></textarea>
+    </div>
+
+    <button class="btn btn-block btn-primary">提交</button>
+  </form>
+</div>
+
+<script type="text/javascript">
+ $('#tags').tagsInput();
+</script>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="panel panel-default">
+	<div class="panel-body">
+  	<a href="/questions/new" class="btn btn-primary">发表新话题</a>
+		<a class="pull-right feed-button btn btn-default" href="/topics/feed">
+      <i class="fa fa-rss"></i> RSS
+    </a>
+	</div>
+</div>
+<div class="hidden-xs hidden-sm">
+
+  <div class="panel panel-default">
+	  <div class="panel-heading">小贴士</div>
+	  <div class="panel-body">
+		  本站是 Go + Revel 编写的
+	  </div>
+  </div>
+
+
+  <div class="panel">
+    <div class="panel-heading">友情社区</div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="https://ruby-china.org" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/photo/2015/646b60747b14fe1e07cda2b787bc831e.png" style="width: 180px;">
+        </a></li><a href="https://ruby-china.org" target="_blank">
+        </a><li class="list-group-item"><a href="https://ruby-china.org" target="_blank">
+        </a><a href="http://cnodejs.org" rel="nofollow" title="CNode 社区" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/assets/cnodejs.png" style="width:180px;"></a></li>
+    </ul>
+  </div>
+
+  <div class="panel panel-default">
+	  <div class="panel-heading">统计信息</div>
+	  <ul class="list-group">
+			<li class="list-group-item">社区会员: 27 人</li>
+			<li class="list-group-item">帖子数: 10 个</li>
+			<li class="list-group-item">回帖数: 12 条</li>
+	  </ul>
+  </div>
+
+</div>
+{% endblock %}

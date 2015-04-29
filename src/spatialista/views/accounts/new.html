@@ -1,0 +1,33 @@
+﻿{% extends "templates/layouts/sign.html" %}
+
+{% block content %}
+<div class="header">
+  <h1>
+    <a href="/" class="logo">
+      <img src="/dist/img/logo.png" alt="Spatialista">
+    </a>
+  </h1>
+  <p class="description">欢迎加入最专业的地理空间社区</p>
+</div>
+
+<form accept-charset="UTF-8" action="/signin" class="ui form" id="new_account" method="post">
+  <input type="hidden" name="__anti-forgery-token" value="{{csrf-token}}">
+  <div class="required form-group">
+    <label>账户</label>
+    <input name="account" id="account" class="form-control" placeholder="用户名或邮箱" type="text">
+    <p for="account" class="validmessage"></p>
+  </div>
+  <div class="required form-group">
+    <label>密码</label>
+    <input name="password" id="password" class="form-control" placeholder="密码" type="password">
+    <p for="password" class="validmessage"></p>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-block btn-primary" type="submit">登录</button>
+    <a href="/signup">注册</a>
+  </div>
+  <div class="field">
+    <a href="/account/forgot">忘记密码了？</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "templates/layouts/home.html" %}
+
+
+{% block content %}
+<h2 class="entry-title">
+  <a href="/articles/{{ question.id }}">{{ question.title }}</a>
+</h2>
+<div class="entry-meta">
+  <a href="/users/{{ question.user_id }}" class="author">
+    <!-- <img src="https://d262ilb51hltx0.cloudfront.net/fit/c/64/64/0*6Z_oWAhIIwEvyltE.jpeg" class="avatar" title=""> -->
+    <span>{{ question.username }}</span>
+  </a>
+  <span class="collection"> in
+    <a href="/collections/{{ question.id }}" title="Go to Steal This Idea" data-collection-slug="steal-this-idea" data-id="15510b462a92" class="link link-secondary">
+      {{ question.title }}
+    </a>
+  </span>
+</div>
+<div class="entry-content">{{question.content|safe}}</div>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="ui divided items">
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">12 Years a Slave</a>
+      <div class="meta">
+        <span class="cinema">Union Square 14</span>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">My Neighbor Totoro</a>
+      <div class="meta">
+        <span class="cinema">IFC Cinema</span>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">Watchmen</a>
+      <div class="meta">
+        <span class="cinema">IFC</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,33 @@
+<div class="form article-form">
+  <form accept-charset="UTF-8" action="/articles" class="pure-form pure-form-stacked" id="new_article" method="post">
+    <fieldset>
+      <h1>
+        <a href="/">
+          <img alt="Logo-small-big" class="bg" src="/image/logo.png" style="height:70px; width: 200px;">
+        </a>
+      </h1>
+
+      <div class="form-group">
+        <label for="user_username">用户名*</label>
+        <input id="username" name="username" placeholder="5到20个英文字符或数字" type="text">
+        <label for="username" class="checktip"></label>
+      </div>
+      <div class="form-group">
+        <label for="user_email">邮箱*</label>
+        <input id="email" name="email" placeholder="邮箱" type="text">
+        <label for="email" class="checktip"></label>
+      </div>
+      <div class="form-group">
+        <label for="user_password">密码*</label>
+        <input id="password" name="password" placeholder="密码" type="password">
+        <label for="password" class="checktip"></label>
+      </div>
+
+      <div class="actions"><input class="pure-button pure-button-primary" name="commit" type="submit" value="注册"></div>
+    </fieldset>
+  </form>
+  <!--<div class="account-persona">-->
+    <!--<p>Or, you can</p>-->
+    <!--<a href="javascript:void(0);" class="persona-button"><span>使用 Email 登录</span></a>-->
+  <!--</div>-->
+</div>

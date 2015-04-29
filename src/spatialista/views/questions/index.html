@@ -1,0 +1,87 @@
+{% extends "layouts/home.html" %}
+
+
+{% block content %}
+<div class="questions panel panel-default">
+	<div class="panel-heading clearfix">
+
+		<div class="filter pull-right">
+			<span class="l">查看:</span>
+			<a href="/topics" class="normal  active ">默认</a> /
+			<a href="/topics/popular" class="popular "><i class="fa fa-diamond"></i> 优质帖子</a> /
+			<a href="/topics/recent" class="recent ">最近发布</a>
+		</div>
+
+	</div>
+	<div class="panel-body">
+    {% for question in questions %}
+    <div class="question media clearfix">
+			<div class="avatar media-left">
+				<a href="/users/{{question.username}}" class="uname">
+          <img src="{{question.avatar}}" class="media-object avatar-48">
+        </a>
+			</div>
+			<div class="infos media-body">
+			  <div class="title media-heading">
+          <a href="/questions/{{question.id}}">{{question.title}}</a>
+        </div>
+				<div class="info">
+          {% if question.tags|not-empty %}
+          {% for tag in question.tags|split-tag %}
+          <a href="/tags/{{tag}}" class="label label-primary">{{tag}}</a>
+          {% endfor %}
+          {% endif %}
+					<a href="/huacnlee" class="uname">huacnlee</a> 发表于 5 小时前
+				</div>
+			</div>
+			<div class="count media-right">
+				<a href="/topics/10#0">0</a>
+			</div>
+		</div>
+    {% endfor %}
+	</div>
+	<div class="panel-footer">
+
+	</div>
+</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="panel panel-default">
+	<div class="panel-body">
+  	<a href="/questions/new" class="btn btn-primary">发表新话题</a>
+		<a class="pull-right feed-button btn btn-default" href="/topics/feed"><i class="fa fa-rss"></i> RSS</a>
+	</div>
+</div>
+<div class="hidden-xs hidden-sm">
+  <div class="panel panel-default">
+	  <div class="panel-heading">小贴士</div>
+	  <div class="panel-body">
+		  本站是 Go + Revel 编写的
+	  </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-heading">友情社区</div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="https://ruby-china.org" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/photo/2015/646b60747b14fe1e07cda2b787bc831e.png" style="width: 180px;">
+        </a></li><a href="https://ruby-china.org" target="_blank">
+        </a><li class="list-group-item"><a href="https://ruby-china.org" target="_blank">
+        </a><a href="http://cnodejs.org" rel="nofollow" title="CNode 社区" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/assets/cnodejs.png" style="width:180px;"></a></li>
+    </ul>
+  </div>
+
+  <div class="panel panel-default">
+	  <div class="panel-heading">统计信息</div>
+	  <ul class="list-group">
+			<li class="list-group-item">社区会员: 27 人</li>
+			<li class="list-group-item">帖子数: 10 个</li>
+			<li class="list-group-item">回帖数: 12 条</li>
+	  </ul>
+  </div>
+
+</div>
+{% endblock %}

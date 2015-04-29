@@ -1,0 +1,134 @@
+{% extends "layouts/home.html" %}
+
+
+{% block content %}
+<div class="question-detail panel panel-default">
+  <div class="panel-heading media clearfix">
+    <div class="media-body">
+      <h2 class="title">
+        {{ question.title }}
+      </h2>
+      <div class="meta">
+        <a href="/users/{{ question.username }}" class="author">
+          {{ question.username }}
+        </a>
+        发表于 {{ question.created_on }}
+      </div>
+    </div>
+    <div class="avatar media-right">
+      <a href="/users/{{question.username}}" class="uname">
+        <img src="{{question.avatar}}" class="media-object avatar-48">
+      </a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="content">{{question.content|safe}}</div>
+  </div>
+</div>
+
+<div class="answers panel panel-default">
+  <div class="panel-heading">
+    共 {{ question.answer_count }} 条回复
+  </div>
+  <div class="panel-body">
+    {% for answer in answers %}
+    <div class="answer media clearfix">
+      <div class="votes media-left">
+        <a href="javascript:" onclick="upVoteTopic(181148);" class="vote" title="答案对人有帮助">
+          <span class="count">3</span>
+          <i class="fa fa-thumbs-o-up"></i>
+        </a>
+        <a href="javascript:" onclick="downVoteTopic(181148);" class="vote" title="答案毫无意义">
+          <i class="fa fa-thumbs-o-down"></i>
+        </a>
+      </div>
+      <div class="content media-body">
+        <div class="extra">
+          <a class="author">{{answer.username}}</a>
+          <span class="date">{{answer.created_on}}</span>
+        </div>
+        <div class="content">{{answer.content}}</div>
+        <div class="actions">
+          <a class="comment">评论</a>
+        </div>
+      </div>
+      <div class="avatar media-right">
+        <a class="ui avatar image">
+          <img src="/dist/img/photo_user.png" class="avatar-32">
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% if user.username %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    撰写答案
+  </div>
+  <form action="/questions/answer" class="answer-form panel-body" method="post">
+    <input name="__anti-forgery-token" value="{{csrf-token}}" type="hidden">
+    <input name="question-id" value="{{question.id}}" type="hidden">
+    <div class="form-group">
+      <textarea name="content" id="content" rows="5" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">提交</button>
+  </form>
+</div>
+{% else %}
+<div class="panel panel-default">
+  <div class="panel-heading">
+    撰写答案
+  </div>
+  <form action="/questions/answer" class="answer-form panel-body" method="post">
+    <input name="__anti-forgery-token" value="{{csrf-token}}" type="hidden">
+    <input name="question-id" value="{{question.id}}" type="hidden">
+    <div class="form-group">
+      <textarea name="content" id="content" rows="5" class="form-control"></textarea>
+    </div>
+    <button class="btn btn-primary btn-block" type="submit">提交</button>
+  </form>
+</div>
+<p>请<a href="/signin">登录</a>再回答问题！</p>
+{% endif %}
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="panel panel-default">
+	<div class="panel-body">
+  	<a href="/questions/new" class="btn btn-primary">发表新话题</a>
+		<a class="pull-right feed-button btn btn-default" href="/topics/feed"><i class="fa fa-rss"></i> RSS</a>
+	</div>
+</div>
+<div class="hidden-xs hidden-sm">
+  <div class="panel panel-default">
+	  <div class="panel-heading">小贴士</div>
+	  <div class="panel-body">
+		  本站是 Go + Revel 编写的
+	  </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-heading">友情社区</div>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <a href="https://ruby-china.org" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/photo/2015/646b60747b14fe1e07cda2b787bc831e.png" style="width: 180px;">
+        </a></li><a href="https://ruby-china.org" target="_blank">
+        </a><li class="list-group-item"><a href="https://ruby-china.org" target="_blank">
+        </a><a href="http://cnodejs.org" rel="nofollow" title="CNode 社区" target="_blank"><img src="https://ruby-china-files.b0.upaiyun.com/assets/cnodejs.png" style="width:180px;"></a></li>
+    </ul>
+  </div>
+
+  <div class="panel panel-default">
+	  <div class="panel-heading">统计信息</div>
+	  <ul class="list-group">
+			<li class="list-group-item">社区会员: 27 人</li>
+			<li class="list-group-item">帖子数: 10 个</li>
+			<li class="list-group-item">回帖数: 12 条</li>
+	  </ul>
+  </div>
+
+</div>
+{% endblock %}

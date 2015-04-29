@@ -1,0 +1,95 @@
+{% extends "templates/layouts/home.html" %}
+
+
+{% block content %}
+<div class="ui tabular menu">
+  <a href="/" class={% ifequal tab "newest" %}"active item"{% else %}"item"{% endifequal %}>最新</a>
+  <a href="/questions/hottest" class={% ifequal tab "hottest" %}"active item"{% else %}"item"{% endifequal %}>热门</a>
+  <a href="/questions/unanswered" class={% ifequal tab "unanswered" %}"active item"{% else %}"item"{% endifequal %}>待回复</a>
+</div>
+<div class="ui divided items questions">
+  {% for question in questions %}
+  <div class="item">
+    <!-- <div class="ui tiny image"> -->
+    <!--   <img src="{{question.avatar}}"> -->
+    <!-- </div> -->
+    <a href="/users/{{question.user_id}}" class="ui tiny image">
+      <img src="{{question.avatar}}">
+    </a>
+    <div class="content">
+      <div class="meta">
+        <span class="right floated time">2 days ago</span>
+        <div class="ui labels">
+          <a href="/tags/ArcGIS" class="ui label">ArcGIS</a>
+          <a href="/tags/System Test" class="ui label">System Test</a>
+        </div>
+      </div>
+      <h2 class="title header">
+        <a href="/questions/{{question.id}}">{{question.title}}</a>
+      </h2>
+      <!-- <span class="right floated author"> -->
+      <!--   <img class="ui avatar image" src="/dist/img/photo2.jpg"> Dog Doggington -->
+      <!-- </span> -->
+      <div class="extra">
+        <span>0 投票</span>
+        <span>0 回复</span>
+        <span>121 浏览</span>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="ui borderless pagination menu">
+  <a class="item">
+    <i class="left arrow icon"></i> Previous
+  </a>
+  <a class="item">1</a>
+  <a class="item">2</a>
+  <a class="item">3</a>
+  <a class="item">4</a>
+  <a class="item">5</a>
+  <a class="item">6</a>
+  <a class="item">
+    Next <i class="icon right arrow"></i>
+  </a>
+</div>
+{% endblock %}
+
+
+{% block sidebar %}
+<div class="ui divided items">
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">12 Years a Slave</a>
+      <div class="meta">
+        <span class="cinema">Union Square 14</span>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">My Neighbor Totoro</a>
+      <div class="meta">
+        <span class="cinema">IFC Cinema</span>
+      </div>
+    </div>
+  </div>
+  <div class="item">
+    <div class="ui tiny image">
+      <img src="/dist/img/image.png">
+    </div>
+    <div class="middle aligned content">
+      <a class="header">Watchmen</a>
+      <div class="meta">
+        <span class="cinema">IFC</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

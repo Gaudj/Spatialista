@@ -1,0 +1,5 @@
+{{range .}}
+<!-- blog entry -->
+<h1><a href="/users/{{ .Id }}">{{ .Id }}{{ .Username }}</a></h1>
+{{ .Email }}
+{{end}}
